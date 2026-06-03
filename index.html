@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安藤政光 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>安藤政光 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社ユニマットホールディング</a>
+  <a href="#k2">2. 株式会社HITOMIOテクノロジーズ</a>
+  <a href="#k3">3. 株式会社ポピンズ</a>
+  <a href="#k4">4. BCホールディングス株式会社</a>
+  <a href="#k5">5. クレドホールディングス株式会社</a>
+  <a href="#k6">6. 株式会社ONODERA GROUP</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">副社長</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社ユニマットホールディング</div>
+  <div class="co-url"><a href="http://www.unimat.co.jp/" target="_blank">http://www.unimat.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒107-0062　東京都港区南青山2-12-14　ユニマット青山ビル</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>ユニマットグループで幹部クラスのポジションを多数保有</li><li>グループ会社複数社（ユニマットプレシャス、ユニマットライフ、南西楽園リゾート等）でのチャンスあり</li><li>既存顧客基盤を活用したリゾート・不動産関連の会員制ビジネスの新展開</li><li>宮古島リゾート事業で2020年までに2000室、最終的には5000室のホテル開業計画</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">ユニマットグループ自体は、高橋さんというオーナーが手広く事業を展開されています。今までコングロマリットでグループ経営をされてこられており、それなりに経営者も育ってきておりますが、まだグループの何社かは、後継者的な立ち位置で出来る方が必要であり、即戦力で経営者となれる方を採用したいとお考えでいらっしゃいます。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>ユニマットグループ自体は、高橋さんというオーナーが手広く事業を展開されています。今までコングロマリットでグループ経営をされてこられており、それなりに経営者も育ってきておりますが、まだグループの何社かは、後継者的な立ち位置で出来る方が必要であり、即戦力で経営者となれる方を採用したいとお考えでいらっしゃいます。</p><p>森本がリクルート時代にご紹介した方が各グループ会社に何名もおり、社長や幹部になられています。ユニマットグループ各社で幹部クラスの方のニーズがあり、もしよろしければそちらでも打診させて頂きたいのですがいかがでしょうか？</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【ユニマットプレシャス】幹部候補</div>
+          <div class="job-preview">ゴルフ事業、マリン事業、アラマンダ青山事業、レストラン事業、ドギーズ事業を統括する副社長</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容：</strong></p><p>ゴルフ事業、マリン事業、アラマンダ青山事業、レストラン事業、ドギーズ事業を統括する副社長。それぞれの事業部には専務~執行役員まで統括役員がいるが、それぞれが持つ事業ポテンシャルを生かし事業拡大を推進する役割。既存事業の営業推進に加え、事業領域の拡大、関連する新規事業の推進の責任者。グループ会社も含めた既存顧客基盤を活用したリゾート・不動産関連の会員制ビジネスの新展開。所有不動産を活かした開発型のリゾートホテルの新設。</p><p><strong>■方針：</strong></p><p>現在、同社ではホテル4棟（約600室）を運営しており、既に着工中の計画を含め2018年には客室計約1000室となる予定です。稼働率は年間平均85％以上、トップシーズンは常に100％稼動です。宮古島は年間70万人が訪れるリゾート地で、現在は島内にホテル約2000室、民宿等を含めても約3000室しかなく、需要が供給を上回っている状態ですが、さらに来年には新たな空港ができるため、外国人観光客を含め、現在の倍以上の観光客が訪れる場所になる見込みです。</p><p><strong>■特徴：</strong></p><p>沖縄本島から南西に300km、珊瑚礁の海が美しい宮古島の「シギラリゾート」。さらに、八重山諸島の石垣島や、「神秘の楽園」西表島、白砂とエメラルドグリーンの海が広がる「癒しの島」小浜島に、「アラマンダ」「ニラカナイ」などのホテルリゾートを展開しています。</p><p><span class='tag tag-must'>MUST</span></p><ul><li>リゾート関連事業の新規立ち上げの経験</li><li>サービス業の経験が必須。不動産開発に関する知見があれば尚可</li></ul>
+        <div class="meta-pills"><span class="pill">📍 勤務地詳細なし</span><span class="pill">🏠 基本出社</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="http://www.unimat.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="http://www.unimat-precious.co.jp/" target="_blank">ユニマットプレシャス</a><a class="lbtn lbtn-out" href="https://www.unimat-life.co.jp/" target="_blank">ユニマットライフ</a><a class="lbtn lbtn-out" href="https://www.nanseirakuen.com/" target="_blank">南西楽園リゾート</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">COO</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社HITOMIOテクノロジーズ</div>
+  <div class="co-url"><a href="https://hitomio.co.jp/" target="_blank">https://hitomio.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>大阪市港区弁天1丁目2-1 大阪ベイタワーオフィス19F</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備中</li><li>社長リレーション</li><li>経営陣へ直接提案可</li><li>既存の鍼灸接骨院事業で来期約27億円売上の見通し</li><li>一般的な鍼灸接骨院のターゲットがシニア層に対し、同社は20～40代女性がメイン顧客</li><li>丸ビルや丸の内テラスなどインテリジェントビルにテナント誘致されるスタイリッシュな店舗</li><li>既存事業のグロースおよび、BtoB事業について社長と一緒に作り上げられるポジション</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「健康寿命プラス５」をビジョンに、ITを活用したヘルケア事業「HITOMIO（ヒトミオ）事業」と、鍼灸接骨院「ReCORE（リコア）鍼灸接骨院」を開業・運営する「鍼灸接骨院事業」を展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「健康寿命プラス５」をビジョンに、ITを活用したヘルケア事業「HITOMIO（ヒトミオ）事業」と、鍼灸接骨院「ReCORE（リコア）鍼灸接骨院」を開業・運営する「鍼灸接骨院事業」を展開しています。</p><p>HITOMIO事業では未病ケアプラットフォームサービスによりプレゼンティーイズムの原因となる首の痛み・肩こり、腰痛の可視化・解決。健康経営を推進し健康寿命の延伸の実現を目指しています。鍼灸接骨院事業では、「ReCORE（リコア）鍼灸接骨院」を関東・関西・名古屋・沖縄エリアに約40店舗院を展開。</p><p>2022年8月には、業界の課題となっている女性施術者長期的に活躍できる仕組みの構築の実現に向け、美容鍼灸院をフランチャイズ展開。今後も新規出店含め規模拡大を進め、近い将来の株式上場も視野に入れています。</p><p><strong>代表取締役社長　小泉 英一氏</strong><br>平成14年明治東洋医学院柔整科卒業。古東整形外科内科勤務を経て、平成15年に株式会社SHIN9を立ち上げこいずみ鍼灸整骨院を開院。激戦区・大阪でナンバーワンの院を育て上げる。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 COO</div>
+          <div class="job-preview">「健康寿命延伸」×「テクノロジー」で、世界を心身ともに健康にする事業のCOO</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容：</strong></p><p>関東・関西・名古屋・沖縄エリアで鍼灸接骨院を展開しており、未病×AIを軸に、未病ケアプラットフォームサービスを提供しています。目指す先は「健康寿命延伸」×「テクノロジー」で、世界を心身ともに健康にしていく事。</p><p>前例が無い領域ではありますが、今後IPOを経て、「AI・ビックデータ」「BtoC」「BtoB」への展開を行い、日本を代表する企業になる事を見据えています。</p><p>COOとして、社長が思い描く戦略を共に汗をかきながら形にしていただける方、戦略イメージを具現化していただける方を求めています。</p>
+        <div class="meta-pills"><span class="pill">📍 大阪・京都・兵庫</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://hitomio.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">打診</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">株式会社ポピンズ</div>
+  <div class="co-url"><a href="https://www.poppins.co.jp" target="_blank">https://www.poppins.co.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒150-0012　東京都渋谷区広尾5丁目6番6号</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>保育業界のリーディングカンパニー（保育所全国約300施設運営）</li><li>2020年12月には、日本初 SDGs -IPOとして東証一部に上場</li><li>2023年8月を契機とした大幅な組織改革実施、第2創業期の変革フェーズ</li><li>轟麻衣子社長（44歳、オーナーの娘、ロンドン大学卒、メリルリンチ・シャネル勤務経験）によるリーダーシップ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">保育所（認可、認証、事業所内）の運営（全国約300施設）、教育ベビーシッター（ナニー）の派遣、スマートシッターの運営や保育従事者向けの教育研修など、育児に関わるワンストップのサービスを提供しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>保育所（認可、認証、事業所内）の運営（全国約300施設）、教育ベビーシッター（ナニー）の派遣、スマートシッターの運営や保育従事者向けの教育研修など、育児に関わるワンストップのサービスを提供しています。約30年前、日本に保育業界やベビーシッター業界がない時代に創業し、保育業界を創り上げてきたリーディングカンパニーです。</p><p>「最高水準のエデュケアと介護サービスで社会に貢献する」という理念のもと、業界最大手であるナニーサービス（ベビーシッター派遣）から全国の保育・教育施設運営、高齢者向けVIPケアサービス、教育研修事業等、幅広い事業の展開により、働く女性を力強く支援していきます。2020年12月には、日本初 SDGs -IPOとして東証一部に上場。</p><p>2018年の創立30周年という節目に創業者である中村氏の娘の轟氏（現在44歳）が代表取締役社長に着任しました。2023年8月に報道された一件を契機に、大幅な組織改革を実施。経営体制の刷新、人材の入れ替え、意思決定プロセスの見直しを進め、第2創業期とも言える変革の時を迎えています。</p><p><strong>▼轟麻衣子社長</strong><br>1976年生まれ。オーナーのお嬢様。12歳で英国に留学、ロンドン大学卒。メリルリンチ、シャネル勤務、欧州経営大学院などを経て、祖父の介護をキッカケに日本へ帰国。2018年母親が創業したポピンズの社長に就任。2児の母。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 打診</div>
+          <div class="job-preview">詳細は個別相談にて</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>詳細な職務内容については、個別にご相談させていただきます。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.poppins.co.jp" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">営業部長兼執行役員</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">BCホールディングス株式会社</div>
+  <div class="co-url"><a href="https://www.bc-holdings.co.jp/" target="_blank">https://www.bc-holdings.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒160-0023 東京都新宿区西新宿1-24-1　エステック情報ビル18F・19F(受付)</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>新社長の鬼武氏を筆頭に、AIや人材開発など各分野のトップランナーが集い始めており、上場を目指す第二創業期の経営変革フェーズに、幹部候補・事業責任者として参画できるタイミング</li><li>累計取引社数5,400社以上、ハウスリスト25,000〜30,000件規模の顧客基盤を活かし、既存資産を事業成長へ転換するダイナミックな挑戦ができます</li><li>教育研修にとどまらず、経営戦略・組織戦略・マーケティング・M&A戦略・AI/SaaSまで事業領域を拡張中</li><li>日本のGDP約70％を占めるサービス業を対象に、人的資本経営を実装し、社会的意義と事業インパクトの両方を追求できるポジション</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">店舗経営のプロフェッショナルが集う成長企業。人財・物件・ITを掛け合わせたユニークなコンサルティング手法で、7,000社を超えるクライアントの夢の実現をサポート。グループとしては2021年より第二創業期と位置づけ、企業カルチャー変革やDXを大々的に推進中で、挑戦と成長の機会が豊富です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>店舗経営のプロフェッショナルが集う成長企業。人財・物件・ITを掛け合わせたユニークなコンサルティング手法で、7,000社を超えるクライアントの夢の実現をサポート。グループとしては2021年より第二創業期と位置づけ、企業カルチャー変革やDXを大々的に推進中で、挑戦と成長の機会が豊富です。</p><p>グループ会社による充実した人材育成制度、業務時間内での研修受講制度など、社員の成長を全力で支援する環境が整っています。100年企業を目指すビジョンのもと、新規事業の開発や海外展開も積極的でタイ・フィリピンでの事業も拡大中。</p><p><strong>主要グループ会社：</strong></p><ul><li><strong>株式会社ホスピタリティ＆グローイング・ジャパン（略称：H&G）</strong><br>サービス業で働く人々の価値向上と、企業の事業成長を両輪で支援する企業。マクドナルド、ユニクロ大学、バーガーキングで人材育成を担ってきた有本氏の思想を起点に設立され、累計取引社数は5,400社以上。</li><li><strong>ビズキューブ・コンサルティング株式会社</strong><br>賃料適正化コンサルティング、工事費削減コンサルティング、テナント工事等を提供</li><li><strong>感動スマイルキューブ株式会社</strong><br>店舗の企画開発・運営</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【HG_東京】営業部長兼執行役員</div>
+          <div class="job-preview">サービス業特化のHRコンサルティング企業での営業部門統括および経営参画</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>株式会社ホスピタリティ＆グローイング・ジャパン(H&G)</strong>は、マクドナルド、ユニクロの教育責任者を歴任した有本（グローイング・アカデミー学長）が、ノウハウを比較、融合、発展させ、独自の人財育成システムとして開発した「グローイング・アカデミー」を起源として、人財育成の力でサービス業の未来を変えるため、2012年4月に設立したHRのプラットフォーマーです。</p><p><strong>募集背景</strong></p><p>2012年の設立から12年が経過。コロナ禍を乗り越えて、売上は安定しつつあるものの、中長期的なグループの発展を見据えた時に、第二創業期として大きく変革に舵を取る決断をいたしました。2025年1月より、大企業における新規事業開発やStartup企業での経営経験を持つ新CEO（鬼武）を外部から招聘。</p><p><strong>PURPOSE/MISSION</strong></p><p>日本経済においてサービス業はGDPの70%を占める基幹産業となり、製造業からサービス業への産業構造転換が加速しています。当社は「サービス業の社会的地位向上」というミッションのもと、業界全体の底上げとプロフェッショナル化を推進しています。</p><p><strong>役割</strong></p><ul><li>営業戦略の立案‧実行および営業組織の統括管理</li><li>執行役員として経営戦略の策定および重要な意思決定への参画</li><li>新規事業開発および既存事業の拡大戦略の推進</li><li>営業チームの人材育成およびパフォーマンス管理</li><li>クライアントとの戦略的パートナーシップの構築</li><li>市場動向の分析および競合戦略の策定</li></ul><p><span class='tag tag-must'>MUST</span></p><ul><li>大卒以上（または同等の理解力や教養をお持ちの方）</li><li>B2B営業における10年以上の経験実績</li><li>営業チームの管理‧育成経験（目安10名以上のチーム管理経験）</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>外食産業など店舗業態の知見（顧客理解のため）</li><li>新規事業の拡販経験やSaasのプロダクトマネジャー経験</li><li>対経営層へのコンサルティング営業経験</li><li>人材マネジメントや人材開発の専門知識、HR業界のビジネスネットワーク</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.bc-holdings.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://hg-japan.com/" target="_blank">H&G</a><a class="lbtn lbtn-out" href="https://www.bizcube.co.jp" target="_blank">ビズキューブ</a></div>
+</div></div>
+
+<div class="card" id="k5"><div class="card-inner">
+  <div class="badges"><span class="badge">COO</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">クレドホールディングス株式会社</div>
+  <div class="co-url"><a href="https://credo-hd.com/" target="_blank">https://credo-hd.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都新宿区西新宿1-13-12　西新宿昭和ビル10階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>3年後のIPOと売上250億円、時価総額500億円達成を目指す急成長企業</li><li>社長が全く癖がなく、素晴らしいスタンス</li><li>年商1000億円に向けてIPOを見据えた成長フェーズ</li><li>執行役員からスタートし、将来的に取締役として活躍できるポジション</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">森本が身震いするほど久々に興奮しながらお会いした企業です。社長が全く癖がなく、素晴らしいスタンスの方、もりちがほれ込みました。現状、ホールディングスでは、取締役が社長のみ・・・タスクフォースとしてCxOの採用を強化しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>森本が身震いするほど久々に興奮しながらお会いした企業です。社長が全く癖がなく、素晴らしいスタンスの方、もりちがほれ込みました。</p><p>現状、ホールディングスでは、取締役が社長のみ・・・タスクフォースとしてCxOの採用を強化しています。3年後のIPOと売上250億円、時価総額500億円達成を目指し、急成長中の企業です。</p><p>事業はホテルを中心とした商業施設に対し「スパ」の設置を提案するリラクゼーション事業を筆頭に、温浴施設・飲食施設の経営、エンタメ事業、ビルメンテナンス事業、人材派遣事業、産後ケアセンターなど、幅広く事業を行いっています。</p><p>社長の白井氏が持つ強力なビジョンと事業を見出す目利き力により、国内のホテルスパ・温浴施設の運営やホテル清掃受託に加え、海外では台湾やベトナムでのスパ事業展開や台湾ビルボードライブのオープンと世界展開を進めています。さらに、富裕層向けメディアの立ち上げ、美容家電やフェムテック関連プロダクトのEC・百貨店販売、日本語学校事業の海外展開構想など、多岐にわたる新規事業と既存事業の拡大を強力に推進しています。今年度は「今あるものを磨いていく」ことをテーマに掲げ、ホールディングス体制を強化中です。</p><p><strong>代表取締役　白井浩一氏</strong><br>1974年広島市生まれ。20歳で広島に創業し、26歳で東京に進出。30歳で、株式会社クレドインターナショナルを設立。国内展開と並行して2012年より台北、ニューヨーク、上海、スリランカなど海外にも進出し、ホテルスパ運営で日本最大手企業となるまでに成長させる。豊富な実績とネットワークにより、最高級から地域密着型まで幅広いスパプロデュースやプロダクト開発を展開。</p><p><strong>各事業例</strong></p><p><strong>【ウェルネス事業】</strong><br>ホテルスパ、インルームスパを主軸にホテル内のスパやリラクゼーション施設、訪問型アロマトリートメントサービスを国内最大級の規模、そして海外にも展開しております。40か所、セラピスト2000か所を委託で運営（東京ステーションホテルやお台場ヒルトン・ロクシタンスパ全店など）また、温浴施設の経営やスパ施設のデザイン・コンサルティング事業も行っております。（名古屋市×東京芸大とのアライアンス事業も展開）</p><p><strong>【ホテル・飲食事業】</strong><br>ホテルのM&Aを強化、ほかに日本の伝統文化をカジュアルに楽しむダイニングとして、エンターテイメントレストラン『SAKURA』を、都内に3店舗（歌舞伎町、銀座、六本木）運営しています。また、2023年11月には台湾・台北に、2024年4月には名古屋に新店をオープンいたしました。『SAKURA』は今後、当社が拠点を持っているニューヨーク、ラスベガス、ロサンゼルス、バンコク、インドネシア、シンガポール、マレーシアなど、10店舗の展開を予定しています。</p><p><strong>【メディア事業】</strong><br>ホテルスパ総合検索アプリ「Wellness Booker」を展開・運用しております。さらに新サービスのアプリを開発中！他にもサイネージや広告の打ち出し、SNSを用いた広報活動など、弊社事業をより発展させていくための発信を行います。</p><p><strong>【エンタメ事業】</strong><br>国内最大級のエンタメビジネスコンテスト「夢叶えるプロジェクト」をはじめ、スパ・サウナ関連のインフルエンサーの活用やサウナアイドルの企画・運営を行っています。</p><p><strong>【スクール・人材事業】</strong><br>人材の採用や定着に関する課題を抱える企業様の力になるべく、弊社で展開している日本語学校（6校・3000人）で学ぶ外国人の人材を即戦力として育成し、派遣しています。ロスにある英語学校もM&Aするなど、コロナ禍中に１/10のコストでスクールのＭ＆Ａを強化。</p><p><strong>【産後ケア事業】</strong><br>日本初となる常設の産後ケアセンターを、2024年2月にホテル椿山荘東京に設立いたしました。産後ケアサービスとは、産後のお母様の心身の回復を目的とし、食事や運動などの母体ケアはもちろん、授乳ケアや育児の知識まで総合的にサポートするというものです。『AMATERASU』の産後ケアサービスは、ミラノ万博日本館レストランもプロデュースした柴田陽子事務所（代表：柴田陽子）の柴田陽子氏がブランドコンセプトを構築し、日本よりも深い産後ケアの歴史を持つ、台湾の産後ケアセンターが監修しています。</p><p><strong>【ビルメンテナンス事業】</strong><br>ホテル客室清掃、ホテルリフォーム、ホテル修繕、設備検査、特殊洗浄清掃、不用品リサイクルなどビルメンテナンスに関する事業を行っています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 COO</div>
+          <div class="job-preview">COOとして既存事業のグロースを担い、年商1000億円に向けてIPOを見据えた事業牽引役</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容</strong></p><p>COOとして、クレドホールディングスが展開する既存事業のグロースをお任せします。新規事業は代表がおこなうため、既存事業のトップラインを引き上げていただくことがミッションです。各事業部の部長はおり、安定成長中の部門もあるため、成長が鈍化している事業のテコ入れを進めていただく想定です。</p><p>年商1000億円に向けてIPOを見据えており、代表と共に事業を牽引頂ける方を求めています。執行役員としてお迎えし、ゆくゆく取締役としてご活躍いただくことが期待されています。</p><p><strong>担当事業領域</strong></p><ul><li><strong>【ウェルネス事業】</strong><br>ホテルスパ、インルームスパを主軸にホテル内のスパやリラクゼーション施設、訪問型アロマトリートメントサービスを国内最大級の規模、そして海外にも展開しております。また、温浴施設の経営やスパ施設のデザイン・コンサルティング事業も行っております。</li><li><strong>【飲食事業】</strong><br>日本の伝統文化をカジュアルに楽しむダイニングとして、エンターテイメントレストラン『SAKURA』を、都内に3店舗（歌舞伎町、銀座、六本木）運営しています。また、2023年11月には台湾・台北に、2024年4月には名古屋に新店をオープンいたしました。『SAKURA』は今後、当社が拠点を持っているニューヨーク、ラスベガス、ロサンゼルス、バンコク、インドネシア、シンガポール、マレーシアなど、10店舗の展開を予定しています。</li><li><strong>【メディア事業】</strong><br>ホテルスパ総合検索アプリ「Wellness Booker」を展開・運用しております。さらに新サービスのアプリを開発中！他にもサイネージや広告の打ち出し、SNSを用いた広報活動など、弊社事業をより発展させていくための発信を行います。</li><li><strong>【エンタメ事業】</strong><br>国内最大級のエンタメビジネスコンテスト「夢叶えるプロジェクト」をはじめ、スパ・サウナ関連のインフルエンサーの活用やサウナアイドルの企画・運営を行っています。</li><li><strong>【人材事業】</strong>★新規事業<br>人材の採用や定着に関する課題を抱える企業様の力になるべく、弊社で展開している日本語学校で学ぶ外国人の人材を即戦力として育成し、派遣しています。</li><li><strong>【産後ケア事業】</strong>★新規事業<br>日本初となる常設の産後ケアセンターを、2024年2月にホテル椿山荘東京に設立いたしました。産後ケアサービスとは、産後のお母様の心身の回復を目的とし、食事や運動などの母体ケアはもちろん、授乳ケアや育児の知識まで総合的にサポートするというものです。『AMATERASU』の産後ケアサービスは、ミラノ万博日本館レストランもプロデュースした柴田陽子事務所（代表：柴田陽子）の柴田陽子氏がブランドコンセプトを構築し、日本よりも深い産後ケアの歴史を持つ、台湾の産後ケアセンターが監修しています。</li><li><strong>【ビルメンテナンス事業】</strong><br>ホテル客室清掃、ホテルリフォーム、ホテル修繕、設備検査、特殊洗浄清掃、不用品リサイクルなどビルメンテナンスに関する事業を行っています。</li></ul><p><span class='tag tag-want'>WANT</span> 課題解決にあたり、フットワーク軽く現場に出向いていただける方</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://credo-hd.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k6"><div class="card-inner">
+  <div class="badges"><span class="badge">オープンポジション</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社ONODERA GROUP</div>
+  <div class="co-url"><a href="https://www.onodera-group.jp/" target="_blank">https://www.onodera-group.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都千代田区大手町1-1-3 大手センタービル16階</td></tr><tr><th>設立</th><td>1983年4月1日</td></tr><tr><th>従業員数</th><td>29,638名（正社員12,481名、パート・サプラー17,157名）</td></tr><tr><th>売上高</th><td>1,559億円（2025年3月期）</td></tr><tr><th>グループ会社数</th><td>31社（2025年4月1日現在）</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>森本の同志的な素晴らしいメンバーの方々が経営幹部として複数名活躍</li><li>食・人財・医療・スポーツ等の多領域でグローバル事業展開</li><li>国内最大級の総合フードサービス企業として成長</li><li>海外展開とグループ再編を通じ、さらなる成長フェーズ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">ONODERA GROUPは、まさに弊社代表・森本の同志的な素晴らしいメンバーの方々が経営幹部として複数名活躍されている企業です。、食・人財・医療・スポーツ等の多領域でグローバルに事業展開する総合企業グループ。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>ONODERA GROUPは、まさに弊社代表・森本の同志的な素晴らしいメンバーの方々が経営幹部として複数名活躍されている企業です。、食・人財・医療・スポーツ等の多領域でグローバルに事業展開する総合企業グループ。1983年の創業以来、「喜びと感動」「成長と幸福」「社会貢献」を理念に国内外で事業を拡大しています。</p><p><strong>基本情報</strong></p><ul><li>創業：1983年4月1日</li><li>グループ会社数：31社（2025年4月1日現在）</li><li>グループ社員数：29,638名（正社員12,481名、パート・サプラー17,157名）</li><li>グループ売上高：1,559億円（2025年3月期）</li></ul><p><strong>主要事業領域</strong></p><ul><li><strong>① コントラクトフードサービス事業（LEOC）</strong><br>全国約2,800ヶ所で給食・食事提供を行う中核事業。</li><li><strong>② フードサービス事業（銀座おのでら ほか）</strong><br>日本食の高級ブランドを世界各国で展開。近年は海外出店も加速。</li><li><strong>③ ヒューマンリソース＆テクノロジー事業（ONODERA USER RUN）</strong><br>東南アジアでの教育、日本向け特定技能人材紹介を展開。</li><li><strong>④ メディカル・シニアライフ事業</strong><br>再生医療・介護施設運営など、医療・高齢者領域へ事業拡大。</li><li><strong>⑤ スポーツ事業（横浜FC／UDオリヴェイレンセ）</strong><br>国内外のプロサッカークラブの運営を通じ地域・スポーツ振興に寄与。</li></ul><p><strong>最近の主要アップデート</strong></p><ul><li>2024年9月：老舗日本料理「なだ万」がグループ入り</li><li>フードサービス事業の海外展開強化（北米・アジア等）</li><li>社員数・売上ともに前年より大幅増加</li></ul><p>ONODERA GROUPは、国内最大級の総合フードサービス企業として成長しつつ、医療・人財・スポーツなど領域を拡大。海外展開とグループ再編を通じ、さらなる成長フェーズに入っています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 オープンポジション</div>
+          <div class="job-preview">多領域でグローバル事業展開する総合企業グループでのオープンポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>食・人財・医療・スポーツ等の多領域でグローバルに事業展開する総合企業グループにて、様々なポジションでの募集を行っています。</p><p>1983年の創業以来、「喜びと感動」「成長と幸福」「社会貢献」を理念に国内外で事業を拡大しており、国内最大級の総合フードサービス企業として成長しつつ、医療・人財・スポーツなど領域を拡大しています。</p><p>海外展開とグループ再編を通じ、さらなる成長フェーズに入っている中で、各事業領域でご活躍いただける方を幅広く募集しています。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.onodera-group.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが安藤政光 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
